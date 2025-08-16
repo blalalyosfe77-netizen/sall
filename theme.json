@@ -1,0 +1,23 @@
+{
+  "name": "ثيم سلة الحديث",
+  "description": "ثيم عصري ومتجاوب للتجارة الإلكترونية مع إمكانيات تخصيص شاملة",
+  "version": "1.0.0",
+  "author": "مطور سلة",
+  "preview": "preview.jpg",
+  "tags": ["modern", "responsive", "customizable", "arabic", "rtl"],
+  "compatibility": {
+    "salla_version": ">=2.0.0"
+  },
+  "features": [
+    "تصميم متجاوب بالكامل",
+    "دعم اللغة العربية وتخطيط RTL",
+    "إعدادات تخصيص شاملة",
+    "تأثيرات وحركات ناعمة",
+    "تحسين محركات البحث SEO",
+    "سرعة تحميل عالية",
+    "تجربة مستخدم متميزة"
+  ],
+  "demo_url": "https://demo.salla.com/theme-preview",
+  "documentation_url": "https://docs.salla.com/themes",
+  "support_url": "https://support.salla.com"
+}

@@ -1,0 +1,280 @@
+{
+  "name": "ثيم سلة الحديث",
+  "description": "ثيم عصري ومتجاوب للتجارة الإلكترونية",
+  "version": "1.0.0",
+  "author": "مطور سلة",
+  "settings": {
+    "colors": {
+      "type": "group",
+      "title": "الألوان",
+      "settings": {
+        "primary_color": {
+          "type": "color",
+          "title": "اللون الأساسي",
+          "default": "#3B82F6",
+          "description": "اللون الأساسي للثيم"
+        },
+        "secondary_color": {
+          "type": "color", 
+          "title": "اللون الثانوي",
+          "default": "#8B5CF6",
+          "description": "اللون الثانوي للثيم"
+        },
+        "accent_color": {
+          "type": "color",
+          "title": "لون التمييز",
+          "default": "#F59E0B",
+          "description": "لون للعناصر المميزة"
+        },
+        "text_color": {
+          "type": "color",
+          "title": "لون النص",
+          "default": "#1F2937",
+          "description": "لون النص الأساسي"
+        },
+        "background_color": {
+          "type": "color",
+          "title": "لون الخلفية",
+          "default": "#FFFFFF",
+          "description": "لون خلفية الموقع"
+        }
+      }
+    },
+    "typography": {
+      "type": "group",
+      "title": "الخطوط",
+      "settings": {
+        "font_family": {
+          "type": "select",
+          "title": "نوع الخط",
+          "default": "Cairo",
+          "options": [
+            {"value": "Cairo", "text": "Cairo"},
+            {"value": "Tajawal", "text": "Tajawal"},
+            {"value": "Almarai", "text": "Almarai"},
+            {"value": "Amiri", "text": "Amiri"}
+          ]
+        },
+        "font_size": {
+          "type": "range",
+          "title": "حجم الخط",
+          "default": 16,
+          "min": 14,
+          "max": 20,
+          "unit": "px"
+        },
+        "heading_font_weight": {
+          "type": "select",
+          "title": "وزن خط العناوين",
+          "default": "700",
+          "options": [
+            {"value": "400", "text": "عادي"},
+            {"value": "500", "text": "متوسط"},
+            {"value": "600", "text": "سميك"},
+            {"value": "700", "text": "سميك جداً"}
+          ]
+        }
+      }
+    },
+    "layout": {
+      "type": "group",
+      "title": "التخطيط",
+      "settings": {
+        "container_width": {
+          "type": "select",
+          "title": "عرض الحاوية",
+          "default": "1200px",
+          "options": [
+            {"value": "1140px", "text": "ضيق"},
+            {"value": "1200px", "text": "متوسط"},
+            {"value": "1320px", "text": "واسع"}
+          ]
+        },
+        "products_per_row": {
+          "type": "range",
+          "title": "عدد المنتجات في الصف",
+          "default": 4,
+          "min": 2,
+          "max": 6
+        },
+        "show_breadcrumb": {
+          "type": "checkbox",
+          "title": "إظهار مسار التنقل",
+          "default": true
+        },
+        "sticky_header": {
+          "type": "checkbox",
+          "title": "تثبيت الهيدر",
+          "default": true
+        }
+      }
+    },
+    "homepage": {
+      "type": "group",
+      "title": "الصفحة الرئيسية",
+      "settings": {
+        "hero_title": {
+          "type": "text",
+          "title": "عنوان البانر الرئيسي",
+          "default": "اكتشف عالم التسوق المثالي"
+        },
+        "hero_subtitle": {
+          "type": "textarea",
+          "title": "النص الفرعي للبانر",
+          "default": "منتجات عالية الجودة بأسعار منافسة. اكتشف مجموعتنا المتميزة من أحدث المنتجات"
+        },
+        "show_categories": {
+          "type": "checkbox",
+          "title": "إظهار الفئات",
+          "default": true
+        },
+        "show_featured_products": {
+          "type": "checkbox",
+          "title": "إظهار المنتجات المميزة",
+          "default": true
+        },
+        "featured_products_title": {
+          "type": "text",
+          "title": "عنوان المنتجات المميزة",
+          "default": "المنتجات المميزة"
+        },
+        "show_features_section": {
+          "type": "checkbox",
+          "title": "إظهار قسم المميزات",
+          "default": true
+        }
+      }
+    },
+    "product_card": {
+      "type": "group",
+      "title": "بطاقة المنتج",
+      "settings": {
+        "show_rating": {
+          "type": "checkbox",
+          "title": "إظهار التقييم",
+          "default": true
+        },
+        "show_reviews_count": {
+          "type": "checkbox",
+          "title": "إظهار عدد المراجعات",
+          "default": true
+        },
+        "show_discount_badge": {
+          "type": "checkbox",
+          "title": "إظهار شارة الخصم",
+          "default": true
+        },
+        "card_border_radius": {
+          "type": "range",
+          "title": "انحناء زوايا البطاقة",
+          "default": 16,
+          "min": 0,
+          "max": 24,
+          "unit": "px"
+        },
+        "hover_effect": {
+          "type": "select",
+          "title": "تأثير الهوفر",
+          "default": "scale",
+          "options": [
+            {"value": "none", "text": "بدون تأثير"},
+            {"value": "scale", "text": "تكبير"},
+            {"value": "shadow", "text": "ظل"},
+            {"value": "lift", "text": "رفع"}
+          ]
+        }
+      }
+    },
+    "header": {
+      "type": "group",
+      "title": "الهيدر",
+      "settings": {
+        "logo_width": {
+          "type": "range",
+          "title": "عرض الشعار",
+          "default": 150,
+          "min": 100,
+          "max": 300,
+          "unit": "px"
+        },
+        "show_search": {
+          "type": "checkbox",
+          "title": "إظهار البحث",
+          "default": true
+        },
+        "show_wishlist": {
+          "type": "checkbox",
+          "title": "إظهار المفضلة",
+          "default": true
+        },
+        "show_account": {
+          "type": "checkbox",
+          "title": "إظهار الحساب",
+          "default": true
+        },
+        "header_background": {
+          "type": "color",
+          "title": "لون خلفية الهيدر",
+          "default": "#FFFFFF"
+        }
+      }
+    },
+    "footer": {
+      "type": "group",
+      "title": "الفوتر",
+      "settings": {
+        "footer_background": {
+          "type": "color",
+          "title": "لون خلفية الفوتر",
+          "default": "#1F2937"
+        },
+        "footer_text_color": {
+          "type": "color",
+          "title": "لون نص الفوتر",
+          "default": "#FFFFFF"
+        },
+        "show_social_links": {
+          "type": "checkbox",
+          "title": "إظهار روابط التواصل",
+          "default": true
+        },
+        "show_newsletter": {
+          "type": "checkbox",
+          "title": "إظهار النشرة الإخبارية",
+          "default": true
+        },
+        "copyright_text": {
+          "type": "text",
+          "title": "نص حقوق النشر",
+          "default": "جميع الحقوق محفوظة"
+        }
+      }
+    },
+    "animations": {
+      "type": "group",
+      "title": "الحركات والتأثيرات",
+      "settings": {
+        "enable_animations": {
+          "type": "checkbox",
+          "title": "تفعيل الحركات",
+          "default": true
+        },
+        "animation_speed": {
+          "type": "select",
+          "title": "سرعة الحركات",
+          "default": "300ms",
+          "options": [
+            {"value": "200ms", "text": "سريع"},
+            {"value": "300ms", "text": "متوسط"},
+            {"value": "500ms", "text": "بطيء"}
+          ]
+        },
+        "page_transition": {
+          "type": "checkbox",
+          "title": "انتقال الصفحات",
+          "default": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,118 @@
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <!-- Company Info -->
+            <div class="footer-section">
+                <div class="footer-logo">
+                    {% if store.logo %}
+                    <img src="{{ store.logo }}" alt="{{ store.name }}" class="logo">
+                    {% else %}
+                    <div class="logo-text">
+                        <div class="logo-icon">{{ store.name | first | upper }}</div>
+                        {{ store.name }}
+                    </div>
+                    {% endif %}
+                </div>
+                <p class="footer-description">{{ store.description }}</p>
+                
+                {% if settings.footer.show_social_links %}
+                <div class="social-links">
+                    {% if store.social.facebook %}
+                    <a href="{{ store.social.facebook }}" class="social-link" target="_blank">
+                        <i class="icon-facebook"></i>
+                    </a>
+                    {% endif %}
+                    {% if store.social.twitter %}
+                    <a href="{{ store.social.twitter }}" class="social-link" target="_blank">
+                        <i class="icon-twitter"></i>
+                    </a>
+                    {% endif %}
+                    {% if store.social.instagram %}
+                    <a href="{{ store.social.instagram }}" class="social-link" target="_blank">
+                        <i class="icon-instagram"></i>
+                    </a>
+                    {% endif %}
+                    {% if store.social.youtube %}
+                    <a href="{{ store.social.youtube }}" class="social-link" target="_blank">
+                        <i class="icon-youtube"></i>
+                    </a>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="{{ url('pages.about') }}">من نحن</a></li>
+                    <li><a href="{{ url('contact') }}">اتصل بنا</a></li>
+                    <li><a href="{{ url('pages.privacy') }}">سياسة الخصوصية</a></li>
+                    <li><a href="{{ url('pages.terms') }}">الشروط والأحكام</a></li>
+                    <li><a href="{{ url('pages.shipping') }}">سياسة الشحن</a></li>
+                    <li><a href="{{ url('pages.returns') }}">سياسة الإرجاع</a></li>
+                </ul>
+            </div>
+
+            <!-- Categories -->
+            <div class="footer-section">
+                <h3>الأقسام</h3>
+                <ul class="footer-links">
+                    {% for category in categories | slice(0, 6) %}
+                    <li><a href="{{ category.url }}">{{ category.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h3>معلومات التواصل</h3>
+                <div class="contact-info">
+                    {% if store.address %}
+                    <div class="contact-item">
+                        <i class="icon-location"></i>
+                        <span>{{ store.address }}</span>
+                    </div>
+                    {% endif %}
+                    {% if store.phone %}
+                    <div class="contact-item">
+                        <i class="icon-phone"></i>
+                        <span>{{ store.phone }}</span>
+                    </div>
+                    {% endif %}
+                    {% if store.email %}
+                    <div class="contact-item">
+                        <i class="icon-email"></i>
+                        <span>{{ store.email }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+
+                {% if settings.footer.show_newsletter %}
+                <!-- Newsletter -->
+                <div class="newsletter">
+                    <h4>اشترك في النشرة الإخبارية</h4>
+                    <form class="newsletter-form" action="{{ url('newsletter.subscribe') }}" method="POST">
+                        <input type="email" name="email" class="newsletter-input" placeholder="بريدك الإلكتروني" required>
+                        <button type="submit" class="btn btn-primary">اشترك</button>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="copyright">
+                <p>© {{ "now" | date("Y") }} {{ store.name }}. {{ settings.footer.copyright_text | default: 'جميع الحقوق محفوظة' }}.</p>
+            </div>
+            <div class="payment-methods">
+                {% if store.payment_methods %}
+                {% for method in store.payment_methods %}
+                <img src="{{ method.image }}" alt="{{ method.name }}" class="payment-icon">
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</footer>

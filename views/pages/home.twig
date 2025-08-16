@@ -1,0 +1,120 @@
+{% extends 'layouts.master' %}
+
+{% block title %}{{ store.name }} - {{ settings.homepage.hero_title | default: 'اكتشف عالم التسوق المثالي' }}{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">{{ settings.homepage.hero_title | default: 'اكتشف عالم التسوق المثالي' }}</h1>
+            <p class="hero-subtitle">{{ settings.homepage.hero_subtitle | default: 'منتجات عالية الجودة بأسعار منافسة. اكتشف مجموعتنا المتميزة من أحدث المنتجات' }}</p>
+            <div class="hero-actions">
+                <a href="{{ url('products') }}" class="btn btn-primary">تسوق الآن</a>
+                <a href="#categories" class="btn btn-outline">استعراض الأقسام</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+{% if settings.homepage.show_categories %}
+<section class="categories-section" id="categories">
+    <div class="container">
+        <div class="section-header">
+            <h2>تسوق حسب الفئة</h2>
+            <p>استعرض مجموعتنا الواسعة من الفئات المختلفة</p>
+        </div>
+        <div class="categories-grid">
+            {% for category in categories | slice(0, 8) %}
+            <a href="{{ category.url }}" class="category-card">
+                <div class="category-icon">
+                    {% if category.image %}
+                    <img src="{{ category.image }}" alt="{{ category.name }}">
+                    {% else %}
+                    <span>{{ category.name | first }}</span>
+                    {% endif %}
+                </div>
+                <h3 class="category-name">{{ category.name }}</h3>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Featured Products -->
+{% if settings.homepage.show_featured_products %}
+<section class="featured-products">
+    <div class="container">
+        <div class="section-header">
+            <h2>{{ settings.homepage.featured_products_title | default: 'المنتجات المميزة' }}</h2>
+            <p>اكتشف مجموعتنا المختارة بعناية من المنتجات عالية الجودة</p>
+        </div>
+        <div class="products-grid">
+            {% for product in products.featured | slice(0, settings.layout.products_per_row * 2) %}
+            {% include 'partials.product-card' with {product: product} %}
+            {% endfor %}
+        </div>
+        <div class="section-footer">
+            <a href="{{ url('products') }}" class="btn btn-primary">عرض المزيد من المنتجات</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Features Section -->
+{% if settings.homepage.show_features_section %}
+<section class="features-section">
+    <div class="container">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="icon-truck"></i>
+                </div>
+                <h3>شحن مجاني</h3>
+                <p>شحن مجاني للطلبات أكثر من 100 ريال</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="icon-shield"></i>
+                </div>
+                <h3>ضمان الجودة</h3>
+                <p>ضمان استرداد المال خلال 30 يوم</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="icon-refresh"></i>
+                </div>
+                <h3>إرجاع سهل</h3>
+                <p>عملية إرجاع بسيطة وسريعة</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="icon-headphones"></i>
+                </div>
+                <h3>دعم 24/7</h3>
+                <p>خدمة عملاء متاحة على مدار الساعة</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- New Arrivals -->
+<section class="new-arrivals">
+    <div class="container">
+        <div class="section-header">
+            <h2>وصل حديثاً</h2>
+            <p>أحدث المنتجات في متجرنا</p>
+        </div>
+        <div class="products-grid">
+            {% for product in products.latest | slice(0, settings.layout.products_per_row) %}
+            {% include 'partials.product-card' with {product: product} %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

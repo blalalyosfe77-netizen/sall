@@ -1,0 +1,66 @@
+<div class="product-card">
+    <div class="product-image-container">
+        <a href="{{ product.url }}">
+            <img src="{{ product.image }}" alt="{{ product.name }}" class="product-image">
+        </a>
+        
+        <!-- Product Badges -->
+        {% if product.is_on_sale and settings.product_card.show_discount_badge %}
+        <div class="product-badge badge-discount">
+            -{{ product.discount_percentage }}%
+        </div>
+        {% endif %}
+        
+        {% if product.is_new %}
+        <div class="product-badge badge-new">جديد</div>
+        {% endif %}
+        
+        <!-- Quick Actions -->
+        <div class="product-actions">
+            <button class="action-btn wishlist-btn" data-product-id="{{ product.id }}">
+                <i class="icon-heart"></i>
+            </button>
+            <button class="action-btn quick-view-btn" data-product-id="{{ product.id }}">
+                <i class="icon-eye"></i>
+            </button>
+        </div>
+    </div>
+    
+    <div class="product-info">
+        <h3 class="product-title">
+            <a href="{{ product.url }}">{{ product.name }}</a>
+        </h3>
+        
+        <!-- Product Rating -->
+        {% if settings.product_card.show_rating and product.rating %}
+        <div class="rating">
+            {% for i in 1..5 %}
+            <span class="star {% if i <= product.rating %}filled{% else %}empty{% endif %}">★</span>
+            {% endfor %}
+            {% if settings.product_card.show_reviews_count and product.reviews_count %}
+            <span class="reviews-count">({{ product.reviews_count }})</span>
+            {% endif %}
+        </div>
+        {% endif %}
+        
+        <!-- Product Price -->
+        <div class="product-price">
+            <span class="current-price">{{ product.price | money }}</span>
+            {% if product.compare_price %}
+            <span class="product-price-original">{{ product.compare_price | money }}</span>
+            {% endif %}
+        </div>
+        
+        <!-- Add to Cart Button -->
+        {% if product.available %}
+        <button class="btn btn-primary add-to-cart-btn" data-product-id="{{ product.id }}">
+            <i class="icon-cart"></i>
+            أضف للسلة
+        </button>
+        {% else %}
+        <button class="btn btn-secondary" disabled>
+            غير متوفر
+        </button>
+        {% endif %}
+    </div>
+</div>

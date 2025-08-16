@@ -1,0 +1,124 @@
+<header class="header">
+    <div class="container">
+        <!-- Top Bar -->
+        <div class="header-top">
+            <div class="contact-info">
+                {% if store.email %}
+                <span>📧 {{ store.email }}</span>
+                {% endif %}
+                {% if store.phone %}
+                <span>📞 {{ store.phone }}</span>
+                {% endif %}
+            </div>
+            <div class="user-actions">
+                {% if user.is_guest %}
+                <a href="{{ url('customer.login') }}">تسجيل الدخول</a>
+                <span>|</span>
+                <a href="{{ url('customer.register') }}">إنشاء حساب</a>
+                {% else %}
+                <a href="{{ url('customer.profile') }}">مرحباً {{ user.first_name }}</a>
+                <a href="{{ url('customer.logout') }}">تسجيل الخروج</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Main Header -->
+        <div class="header-content">
+            <!-- Logo -->
+            <div class="logo-section">
+                <a href="{{ url('home') }}">
+                    {% if store.logo %}
+                    <img src="{{ store.logo }}" alt="{{ store.name }}" class="logo">
+                    {% else %}
+                    <div class="logo-text">
+                        <div class="logo-icon">{{ store.name | first | upper }}</div>
+                        {{ store.name }}
+                    </div>
+                    {% endif %}
+                </a>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="main-nav">
+                <ul class="nav">
+                    <li><a href="{{ url('home') }}" class="nav-link">الرئيسية</a></li>
+                    <li><a href="{{ url('products') }}" class="nav-link">المنتجات</a></li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="nav-link">الأقسام</a>
+                        <ul class="dropdown-menu">
+                            {% for category in categories %}
+                            <li><a href="{{ category.url }}">{{ category.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li><a href="{{ url('offers') }}" class="nav-link">العروض</a></li>
+                    <li><a href="{{ url('contact') }}" class="nav-link">اتصل بنا</a></li>
+                </ul>
+            </nav>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <!-- Search -->
+                {% if settings.header.show_search %}
+                <div class="search-container">
+                    <form class="search-form" action="{{ url('products') }}" method="GET">
+                        <input type="text" name="q" class="search-input" placeholder="ابحث عن المنتجات..." value="{{ request.q }}">
+                        <button type="submit" class="search-btn">
+                            <i class="icon-search"></i>
+                        </button>
+                    </form>
+                </div>
+                {% endif %}
+
+                <!-- Wishlist -->
+                {% if settings.header.show_wishlist %}
+                <a href="{{ url('wishlist') }}" class="header-action">
+                    <i class="icon-heart"></i>
+                    {% if wishlist.count > 0 %}
+                    <span class="badge">{{ wishlist.count }}</span>
+                    {% endif %}
+                </a>
+                {% endif %}
+
+                <!-- Account -->
+                {% if settings.header.show_account %}
+                <a href="{% if user.is_guest %}{{ url('customer.login') }}{% else %}{{ url('customer.profile') }}{% endif %}" class="header-action">
+                    <i class="icon-user"></i>
+                </a>
+                {% endif %}
+
+                <!-- Cart -->
+                <a href="{{ url('cart') }}" class="header-action cart-action">
+                    <i class="icon-cart"></i>
+                    {% if cart.count > 0 %}
+                    <span class="badge">{{ cart.count }}</span>
+                    {% endif %}
+                </a>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav">
+            <ul class="mobile-nav-list">
+                <li><a href="{{ url('home') }}">الرئيسية</a></li>
+                <li><a href="{{ url('products') }}">المنتجات</a></li>
+                {% for category in categories %}
+                <li><a href="{{ category.url }}">{{ category.name }}</a></li>
+                {% endfor %}
+                <li><a href="{{ url('offers') }}">العروض</a></li>
+                <li><a href="{{ url('contact') }}">اتصل بنا</a></li>
+                {% if user.is_guest %}
+                <li><a href="{{ url('customer.login') }}">تسجيل الدخول</a></li>
+                <li><a href="{{ url('customer.register') }}">إنشاء حساب</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</header>
